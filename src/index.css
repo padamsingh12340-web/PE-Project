@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-950 text-gray-200 font-sans antialiased;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2d3a57 transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    @apply bg-ink-600 rounded-full;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-500;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-ink-900/70 backdrop-blur-xl border border-ink-700/50;
+  }
+  .glass-light {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .card {
+    @apply bg-ink-850 border border-ink-700/60 rounded-xl shadow-lg transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:border-ink-600 hover:shadow-xl hover:-translate-y-0.5;
+  }
+  .glow-cricket {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+  }
+  .glow-football {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+  }
+  .glow-esports {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+  }
+  .glow-red {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+  }
+  .text-glow {
+    text-shadow: 0 0 12px currentColor;
+  }
+  .skeleton {
+    @apply bg-gradient-to-r from-ink-800 via-ink-750 to-ink-800 bg-[length:200%_100%] animate-shimmer rounded-md;
+  }
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(34,197,94,0.4), rgba(6,182,212,0.4), rgba(168,85,247,0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* Light mode overrides */
+.light body {
+  @apply bg-slate-100 text-slate-800;
+}
+.light .card {
+  @apply bg-white border-slate-200 shadow-md;
+}
+.light .glass {
+  @apply bg-white/80 border-slate-200;
+}
+.light .glass-light {
+  @apply bg-slate-100/80 border-slate-200;
+}
+.light .skeleton {
+  @apply from-slate-200 via-slate-100 to-slate-200;
+}
+.light *::-webkit-scrollbar-thumb {
+  @apply bg-slate-300;
+}
